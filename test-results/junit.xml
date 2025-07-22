@@ -1,0 +1,50 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="2.9745850000000003">
+<testsuite name="order-placement.spec.ts" timestamp="2025-07-21T16:04:43.548Z" hostname="chromium" tests="1" failures="1" skipped="0" time="2.658" errors="0">
+<testcase name="Order Placement Regression Tests › Complete order placement flow with single product" classname="order-placement.spec.ts" time="2.658">
+<failure message="order-placement.spec.ts:34:7 Complete order placement flow with single product" type="FAILURE">
+<![CDATA[  [chromium] › order-placement.spec.ts:34:7 › Order Placement Regression Tests › Complete order placement flow with single product 
+
+    Error: locator.click: Error: strict mode violation: locator('.navigation').locator('a:has-text("Men")') resolved to 3 elements:
+        1) <a id="ui-id-4" tabindex="-1" role="menuitem" aria-haspopup="true" class="level-top ui-corner-all" href="https://magento.softwaretestingboard.com/women.html">…</a> aka getByRole('menuitem', { name: ' Women' })
+        2) <a id="ui-id-5" tabindex="-1" role="menuitem" aria-haspopup="true" class="level-top ui-corner-all" href="https://magento.softwaretestingboard.com/men.html">…</a> aka getByRole('menuitem', { name: ' Men' })
+        3) <a id="ui-id-26" tabindex="-1" role="menuitem" class="ui-corner-all" href="https://magento.softwaretestingboard.com/gear/fitness-equipment.html">…</a> aka locator('#ui-id-26')
+
+    Call log:
+      - waiting for locator('.navigation').locator('a:has-text("Men")')
+
+
+       at ../pages/HomePage.ts:40
+
+      38 |
+      39 |   async navigateToCategory(category: string) {
+    > 40 |     await this.navigationMenu.locator(`a:has-text("${category}")`).click();
+         |                                                                    ^
+      41 |     await this.waitForPageLoad();
+      42 |   }
+      43 |
+        at HomePage.navigateToCategory (/Users/razvanhodisan/luma/luma-automation-tests/pages/HomePage.ts:40:68)
+        at /Users/razvanhodisan/luma/luma-automation-tests/tests/order-placement.spec.ts:36:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/video.webm]]
+
+[[ATTACHMENT|screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,25 @@
+{
+  "name": "luma-automation-tests",
+  "version": "1.0.0",
+  "description": "Automated regression tests for Luma e-commerce order placement process",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "test:codegen": "playwright codegen https://magento.softwaretestingboard.com/",
+    "install:browsers": "playwright install"
+  },
+  "keywords": ["playwright", "typescript", "e2e", "automation", "regression"],
+  "author": "QA Automation Engineer",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.0.15",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.0"
+  }
+}

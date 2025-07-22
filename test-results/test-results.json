@@ -1,0 +1,169 @@
+{
+  "config": {
+    "configFile": "/Users/razvanhodisan/luma/luma-automation-tests/playwright.config.ts",
+    "rootDir": "/Users/razvanhodisan/luma/luma-automation-tests/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "test-results/html-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/test-results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/junit.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/razvanhodisan/luma/luma-automation-tests/test-results/screenshots",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/razvanhodisan/luma/luma-automation-tests/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.54.1",
+    "workers": 8,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "order-placement.spec.ts",
+      "file": "order-placement.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Order Placement Regression Tests",
+          "file": "order-placement.spec.ts",
+          "line": 14,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Complete order placement flow with single product",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 2658,
+                      "error": {
+                        "message": "Error: locator.click: Error: strict mode violation: locator('.navigation').locator('a:has-text(\"Men\")') resolved to 3 elements:\n    1) <a id=\"ui-id-4\" tabindex=\"-1\" role=\"menuitem\" aria-haspopup=\"true\" class=\"level-top ui-corner-all\" href=\"https://magento.softwaretestingboard.com/women.html\">…</a> aka getByRole('menuitem', { name: ' Women' })\n    2) <a id=\"ui-id-5\" tabindex=\"-1\" role=\"menuitem\" aria-haspopup=\"true\" class=\"level-top ui-corner-all\" href=\"https://magento.softwaretestingboard.com/men.html\">…</a> aka getByRole('menuitem', { name: ' Men' })\n    3) <a id=\"ui-id-26\" tabindex=\"-1\" role=\"menuitem\" class=\"ui-corner-all\" href=\"https://magento.softwaretestingboard.com/gear/fitness-equipment.html\">…</a> aka locator('#ui-id-26')\n\nCall log:\n\u001b[2m  - waiting for locator('.navigation').locator('a:has-text(\"Men\")')\u001b[22m\n",
+                        "stack": "Error: locator.click: Error: strict mode violation: locator('.navigation').locator('a:has-text(\"Men\")') resolved to 3 elements:\n    1) <a id=\"ui-id-4\" tabindex=\"-1\" role=\"menuitem\" aria-haspopup=\"true\" class=\"level-top ui-corner-all\" href=\"https://magento.softwaretestingboard.com/women.html\">…</a> aka getByRole('menuitem', { name: ' Women' })\n    2) <a id=\"ui-id-5\" tabindex=\"-1\" role=\"menuitem\" aria-haspopup=\"true\" class=\"level-top ui-corner-all\" href=\"https://magento.softwaretestingboard.com/men.html\">…</a> aka getByRole('menuitem', { name: ' Men' })\n    3) <a id=\"ui-id-26\" tabindex=\"-1\" role=\"menuitem\" class=\"ui-corner-all\" href=\"https://magento.softwaretestingboard.com/gear/fitness-equipment.html\">…</a> aka locator('#ui-id-26')\n\nCall log:\n\u001b[2m  - waiting for locator('.navigation').locator('a:has-text(\"Men\")')\u001b[22m\n\n    at HomePage.navigateToCategory (/Users/razvanhodisan/luma/luma-automation-tests/pages/HomePage.ts:40:68)\n    at /Users/razvanhodisan/luma/luma-automation-tests/tests/order-placement.spec.ts:36:20",
+                        "location": {
+                          "file": "/Users/razvanhodisan/luma/luma-automation-tests/pages/HomePage.ts",
+                          "column": 68,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m../pages/HomePage.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36masync\u001b[39m navigateToCategory(category\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mnavigationMenu\u001b[33m.\u001b[39mlocator(\u001b[32m`a:has-text(\"${category}\")`\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mwaitForPageLoad()\u001b[33m;\u001b[39m\n \u001b[90m 42 |\u001b[39m   }\n \u001b[90m 43 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/razvanhodisan/luma/luma-automation-tests/pages/HomePage.ts",
+                            "column": 68,
+                            "line": 40
+                          },
+                          "message": "Error: locator.click: Error: strict mode violation: locator('.navigation').locator('a:has-text(\"Men\")') resolved to 3 elements:\n    1) <a id=\"ui-id-4\" tabindex=\"-1\" role=\"menuitem\" aria-haspopup=\"true\" class=\"level-top ui-corner-all\" href=\"https://magento.softwaretestingboard.com/women.html\">…</a> aka getByRole('menuitem', { name: ' Women' })\n    2) <a id=\"ui-id-5\" tabindex=\"-1\" role=\"menuitem\" aria-haspopup=\"true\" class=\"level-top ui-corner-all\" href=\"https://magento.softwaretestingboard.com/men.html\">…</a> aka getByRole('menuitem', { name: ' Men' })\n    3) <a id=\"ui-id-26\" tabindex=\"-1\" role=\"menuitem\" class=\"ui-corner-all\" href=\"https://magento.softwaretestingboard.com/gear/fitness-equipment.html\">…</a> aka locator('#ui-id-26')\n\nCall log:\n\u001b[2m  - waiting for locator('.navigation').locator('a:has-text(\"Men\")')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m../pages/HomePage.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m\n \u001b[90m 39 |\u001b[39m   \u001b[36masync\u001b[39m navigateToCategory(category\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mnavigationMenu\u001b[33m.\u001b[39mlocator(\u001b[32m`a:has-text(\"${category}\")`\u001b[39m)\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mwaitForPageLoad()\u001b[33m;\u001b[39m\n \u001b[90m 42 |\u001b[39m   }\n \u001b[90m 43 |\u001b[39m\u001b[0m\n\u001b[2m    at HomePage.navigateToCategory (/Users/razvanhodisan/luma/luma-automation-tests/pages/HomePage.ts:40:68)\u001b[22m\n\u001b[2m    at /Users/razvanhodisan/luma/luma-automation-tests/tests/order-placement.spec.ts:36:20\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-07-21T16:04:43.748Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/razvanhodisan/luma/luma-automation-tests/test-results/screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/razvanhodisan/luma/luma-automation-tests/test-results/screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/razvanhodisan/luma/luma-automation-tests/test-results/screenshots/order-placement-Order-Plac-112f5-nt-flow-with-single-product-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/razvanhodisan/luma/luma-automation-tests/pages/HomePage.ts",
+                        "column": 68,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0b41e91356623814846a-19cd4f12806a24f93742",
+              "file": "order-placement.spec.ts",
+              "line": 34,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-07-21T16:04:43.536Z",
+    "duration": 2974.585,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

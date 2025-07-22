@@ -1,0 +1,61 @@
+{
+  "validCustomers": [
+    {
+      "email": "test.customer1@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "street": "123 Test Street",
+      "city": "New York",
+      "state": "New York",
+      "zipCode": "10001",
+      "country": "US",
+      "phone": "5551234567",
+      "password": "Test123!@#"
+    },
+    {
+      "email": "test.customer2@example.com",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "street": "456 Sample Avenue",
+      "city": "Los Angeles",
+      "state": "California",
+      "zipCode": "90210",
+      "country": "US",
+      "phone": "5559876543",
+      "password": "Test456!@#"
+    }
+  ],
+  "invalidCustomers": [
+    {
+      "email": "invalid-email",
+      "firstName": "",
+      "lastName": "",
+      "street": "",
+      "city": "",
+      "state": "",
+      "zipCode": "invalid",
+      "country": "",
+      "phone": "123",
+      "password": "123"
+    }
+  ],
+  "states": [
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California",
+    "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
+    "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
+    "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+    "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri",
+    "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+    "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+    "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+    "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+    "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+  ],
+  "shippingMethods": [
+    "Fixed",
+    "Table Rate"
+  ],
+  "paymentMethods": [
+    "checkmo"
+  ]
+}

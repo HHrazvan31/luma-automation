@@ -1,0 +1,222 @@
+# Page snapshot
+
+```yaml
+- paragraph: This is a demo store to test your test automaiton scripts. No orders will be fulfilled. If you are facing any issue, email us at hello@softwaretestingboard.com.
+- banner:
+  - link "Skip to Content":
+    - /url: "#contentarea"
+  - list:
+    - listitem:
+      - link:
+        - /url: https://buymeacoffee.com/softwaretestingb
+    - listitem:
+      - link "Sign In":
+        - /url: https://magento.softwaretestingboard.com/customer/account/login/referer/aHR0cHM6Ly9tYWdlbnRvLnNvZnR3YXJldGVzdGluZ2JvYXJkLmNvbS8%2C/
+      - text: or
+    - listitem:
+      - link "Create an Account":
+        - /url: https://magento.softwaretestingboard.com/customer/account/create/
+  - link "store logo":
+    - /url: https://magento.softwaretestingboard.com/
+  - link " My Cart":
+    - /url: https://magento.softwaretestingboard.com/checkout/cart/
+  - text:  Search
+  - combobox " Search"
+  - button "Search" [disabled]:  Search
+  - list:
+    - listitem
+- tablist:
+  - tabpanel:
+    - navigation:
+      - menu:
+        - menuitem "What's New"
+        - menuitem " Women"
+        - menuitem " Men"
+        - menuitem " Gear"
+        - menuitem " Training"
+        - menuitem "Sale"
+- main:
+  - heading "Home Page" [level=1]
+  - link "New Luma Yoga Collection Get fit and look fab in new seasonal styles Shop New Yoga":
+    - /url: https://magento.softwaretestingboard.com/collections/yoga-new.html
+    - text: New Luma Yoga Collection
+    - strong: Get fit and look fab in new seasonal styles
+    - text: Shop New Yoga
+  - heading "Hot Sellers" [level=2]
+  - paragraph: "Here is what`s trending on Luma right now"
+  - paragraph
+  - list:
+    - listitem:
+      - link "Radiant Tee":
+        - /url: https://magento.softwaretestingboard.com/radiant-tee.html
+        - img "Radiant Tee"
+      - strong:
+        - link "Radiant Tee":
+          - /url: https://magento.softwaretestingboard.com/radiant-tee.html
+      - text: "Rating:   60%"
+      - link "3 Reviews":
+        - /url: https://magento.softwaretestingboard.com/radiant-tee.html#reviews
+      - text: As low as $22.00
+      - listbox "Size":
+        - option "XS"
+        - option "S"
+        - option "M"
+        - option "L"
+        - option "XL"
+      - listbox "Color":
+        - option "Blue"
+        - option "Orange"
+        - option "Purple"
+      - button "Add to Cart"
+      - link " Add to Wish List":
+        - /url: "#"
+      - link " Add to Compare":
+        - /url: "#"
+    - listitem:
+      - link "Breathe-Easy Tank":
+        - /url: https://magento.softwaretestingboard.com/breathe-easy-tank.html
+        - img "Breathe-Easy Tank"
+      - strong:
+        - link "Breathe-Easy Tank":
+          - /url: https://magento.softwaretestingboard.com/breathe-easy-tank.html
+      - text: "Rating:   70%"
+      - link "2 Reviews":
+        - /url: https://magento.softwaretestingboard.com/breathe-easy-tank.html#reviews
+      - text: As low as $34.00
+      - listbox "Size":
+        - option "XS"
+        - option "S"
+        - option "M"
+        - option "L"
+        - option "XL"
+      - listbox "Color":
+        - option "Purple"
+        - option "White"
+        - option "Yellow"
+      - button "Add to Cart"
+      - link " Add to Wish List":
+        - /url: "#"
+      - link " Add to Compare":
+        - /url: "#"
+    - listitem:
+      - link "Argus All-Weather Tank":
+        - /url: https://magento.softwaretestingboard.com/argus-all-weather-tank.html
+        - img "Argus All-Weather Tank"
+      - strong:
+        - link "Argus All-Weather Tank":
+          - /url: https://magento.softwaretestingboard.com/argus-all-weather-tank.html
+      - text: As low as $22.00
+      - listbox "Size":
+        - option "XS"
+        - option "S"
+        - option "M"
+        - option "L"
+        - option "XL"
+      - listbox "Color":
+        - option "Gray"
+      - button "Add to Cart"
+      - link " Add to Wish List":
+        - /url: "#"
+      - link " Add to Compare":
+        - /url: "#"
+    - listitem:
+      - link "Hero Hoodie":
+        - /url: https://magento.softwaretestingboard.com/hero-hoodie.html
+        - img "Hero Hoodie"
+      - strong:
+        - link "Hero Hoodie":
+          - /url: https://magento.softwaretestingboard.com/hero-hoodie.html
+      - text: As low as $54.00
+      - listbox "Size":
+        - option "XS"
+        - option "S"
+        - option "M"
+        - option "L"
+        - option "XL"
+      - listbox "Color":
+        - option "Black"
+        - option "Gray"
+        - option "Green"
+      - button "Add to Cart"
+      - link " Add to Wish List":
+        - /url: "#"
+      - link " Add to Compare":
+        - /url: "#"
+    - listitem:
+      - link "Fusion Backpack":
+        - /url: https://magento.softwaretestingboard.com/fusion-backpack.html
+        - img "Fusion Backpack"
+      - strong:
+        - link "Fusion Backpack":
+          - /url: https://magento.softwaretestingboard.com/fusion-backpack.html
+      - text: "Rating:   67%"
+      - link "3 Reviews":
+        - /url: https://magento.softwaretestingboard.com/fusion-backpack.html#reviews
+      - text: $59.00
+      - button "Add to Cart"
+      - link " Add to Wish List":
+        - /url: "#"
+      - link " Add to Compare":
+        - /url: "#"
+    - listitem:
+      - link "Push It Messenger Bag":
+        - /url: https://magento.softwaretestingboard.com/push-it-messenger-bag.html
+        - img "Push It Messenger Bag"
+      - strong:
+        - link "Push It Messenger Bag":
+          - /url: https://magento.softwaretestingboard.com/push-it-messenger-bag.html
+      - text: "Rating:   67%"
+      - link "3 Reviews":
+        - /url: https://magento.softwaretestingboard.com/push-it-messenger-bag.html#reviews
+      - text: $45.00
+      - button "Add to Cart"
+      - link " Add to Wish List":
+        - /url: "#"
+      - link " Add to Compare":
+        - /url: "#"
+  - paragraph
+- contentinfo:
+  - list:
+    - listitem:
+      - link "Notes":
+        - /url: https://softwaretestingboard.com/magento-store-notes/?utm_source=magento_store&utm_medium=banner&utm_campaign=notes_promo&utm_id=notes_promotion
+    - listitem:
+      - link "Practice API Testing using Magento 2":
+        - /url: https://softwaretestingboard.com/practice-api-testing-using-magento-2/?utm_source=magento_store&utm_medium=banner&utm_campaign=notes_promo&utm_id=API_Testing_Promo
+    - listitem:
+      - link "Write for us":
+        - /url: https://softwaretestingboard.com/write-for-us/?utm_source=magento_store&utm_medium=banner&utm_campaign=notes_promo&utm_id=write4us
+    - listitem:
+      - link "Subscribe":
+        - /url: https://softwaretestingboard.com/subscribe/?utm_source=magento_store&utm_medium=banner&utm_campaign=notes_promo&utm_id=email_subscribe
+  - list:
+    - listitem:
+      - link "Search Terms":
+        - /url: https://magento.softwaretestingboard.com/search/term/popular/
+    - listitem:
+      - link "Privacy and Cookie Policy":
+        - /url: https://magento.softwaretestingboard.com/privacy-policy-cookie-restriction-mode/
+    - listitem:
+      - link "Advanced Search":
+        - /url: https://magento.softwaretestingboard.com/catalogsearch/advanced/
+    - listitem:
+      - link "Orders and Returns":
+        - /url: https://magento.softwaretestingboard.com/sales/guest/form/
+- text: We know you have an assignment to complete. If this site is not functioning as expected, drop us an email. Copyright © 2013-present Magento, Inc. All rights reserved.
+- dialog "Software Testing Board asks for your consent to use your personal data to:":
+  - paragraph: Welcome to Software Testing Board
+  - heading "Software Testing Board asks for your consent to use your personal data to:" [level=1]
+  - list:
+    - listitem: Personalised advertising and content, advertising and content measurement, audience research and services development
+    - listitem: Store and/or access information on a device
+  - button "Learn more"
+  - paragraph:
+    - text: Your personal data will be processed and information from your device (cookies, unique identifiers, and other device data) may be stored by, accessed by and shared with
+    - button "142 TCF vendor(s) and 68 ad partner(s)"
+    - text: ", or used specifically by this site or app."
+  - paragraph: Some vendors may process your personal data on the basis of legitimate interest, which you can object to by managing your options below. Look for a link at the bottom of this page to manage or withdraw consent in privacy and cookie settings.
+  - button "Consent":
+    - paragraph: Consent
+  - button "Manage options":
+    - paragraph: Manage options
+```

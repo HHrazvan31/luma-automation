@@ -1,0 +1,74 @@
+{
+  "menProducts": [
+    {
+      "name": "Hero Hoodie",
+      "category": "Men",
+      "subcategory": "Hoodies & Sweatshirts",
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Black", "Gray", "Green"],
+      "basePrice": 54.00
+    },
+    {
+      "name": "Frankie Sweatshirt",
+      "category": "Men",
+      "subcategory": "Hoodies & Sweatshirts",
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Gray", "Green", "Orange"],
+      "basePrice": 60.00
+    },
+    {
+      "name": "Ajax Full-Zip Sweatshirt",
+      "category": "Men",
+      "subcategory": "Hoodies & Sweatshirts",
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Black", "Gray", "Red"],
+      "basePrice": 69.00
+    }
+  ],
+  "womenProducts": [
+    {
+      "name": "Radiant Tee",
+      "category": "Women",
+      "subcategory": "Tees",
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Blue", "Orange", "Purple"],
+      "basePrice": 22.00
+    },
+    {
+      "name": "Breathe-Easy Tank",
+      "category": "Women",
+      "subcategory": "Tanks",
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Blue", "Purple", "White"],
+      "basePrice": 18.00
+    },
+    {
+      "name": "Olivia 1/4 Zip Light Jacket",
+      "category": "Women",
+      "subcategory": "Jackets",
+      "sizes": ["XS", "S", "M", "L", "XL"],
+      "colors": ["Black", "Gray", "Purple"],
+      "basePrice": 77.00
+    }
+  ],
+  "searchTerms": [
+    "hoodie",
+    "jacket",
+    "tee",
+    "tank",
+    "sweatshirt"
+  ],
+  "categories": [
+    "Men",
+    "Women",
+    "Gear",
+    "Training",
+    "Sale"
+  ],
+  "subcategories": {
+    "Men": ["Tops", "Bottoms"],
+    "Women": ["Tops", "Bottoms"],
+    "Gear": ["Bags", "Fitness Equipment", "Watches"],
+    "Training": ["Video Download"]
+  }
+}
