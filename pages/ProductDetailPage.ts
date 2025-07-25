@@ -36,11 +36,57 @@ export class ProductDetailPage extends BasePage {
   }
 
   async selectSize(size: string) {
-    await this.sizeOptions.filter({ hasText: size }).click();
+    const sizeOption = this.page.locator(`.swatch-attribute.size .swatch-option[option-label="${size}"]`);
+    await sizeOption.click();
+    await this.page.waitForTimeout(500); // Wait for selection to register
+  }
+
+  async selectSizeByIndex(index: number) {
+    const sizeOptions = this.page.locator('.swatch-attribute.size .swatch-option');
+    await sizeOptions.nth(index).click();
+    await this.page.waitForTimeout(500);
   }
 
   async selectColor(color: string) {
-    await this.colorOptions.locator(`[aria-label*="${color}"]`).click();
+    const colorOption = this.page.locator(`.swatch-attribute.color .swatch-option[option-label="${color}"]`);
+    await colorOption.click();
+    await this.page.waitForTimeout(500);
+  }
+
+  async selectColorByIndex(index: number) {
+    const colorOptions = this.page.locator('.swatch-attribute.color .swatch-option');
+    await colorOptions.nth(index).click();
+    await this.page.waitForTimeout(500);
+  }
+
+  async selectFirstAvailableSize() {
+    try {
+      const sizeOptions = this.page.locator('.swatch-attribute.size .swatch-option');
+      await sizeOptions.first().waitFor({ state: 'visible', timeout: 5000 });
+      const count = await sizeOptions.count();
+      if (count > 0) {
+        await sizeOptions.first().click();
+        await this.page.waitForTimeout(1000); // Wait for selection to register
+        console.log('Selected first available size');
+      }
+    } catch (error) {
+      console.log('No size options available or already selected');
+    }
+  }
+
+  async selectFirstAvailableColor() {
+    try {
+      const colorOptions = this.page.locator('.swatch-attribute.color .swatch-option');
+      await colorOptions.first().waitFor({ state: 'visible', timeout: 5000 });
+      const count = await colorOptions.count();
+      if (count > 0) {
+        await colorOptions.first().click();
+        await this.page.waitForTimeout(1000); // Wait for selection to register
+        console.log('Selected first available color');
+      }
+    } catch (error) {
+      console.log('No color options available or already selected');
+    }
   }
 
   async setQuantity(quantity: number) {
@@ -49,13 +95,50 @@ export class ProductDetailPage extends BasePage {
   }
 
   async addToCart() {
+    // Wait for the add to cart button to be enabled after selecting options
+    await this.addToCartButton.waitFor({ state: 'visible', timeout: 10000 });
+    
+    // Check if button is enabled (might be disabled if required options not selected)
+    const isEnabled = await this.addToCartButton.isEnabled();
+    if (!isEnabled) {
+      console.log('Add to cart button is disabled, checking for missing required options');
+      // Try to select any missing required options
+      await this.selectFirstAvailableSize();
+      await this.selectFirstAvailableColor();
+      await this.page.waitForTimeout(1000);
+    }
+    
     await this.addToCartButton.click();
+    console.log('Clicked Add to Cart button');
   }
 
   async addToCartWithOptions(size?: string, color?: string, quantity?: number) {
-    if (size) await this.selectSize(size);
-    if (color) await this.selectColor(color);
-    if (quantity) await this.setQuantity(quantity);
+    await this.waitForOptionsToLoad();
+    
+    if (size) {
+      await this.selectSize(size);
+    } else {
+      await this.selectFirstAvailableSize();
+    }
+    
+    if (color) {
+      await this.selectColor(color);
+    } else {
+      await this.selectFirstAvailableColor();
+    }
+    
+    if (quantity) {
+      await this.setQuantity(quantity);
+    }
+    
+    await this.addToCart();
+    await this.successMessage.waitFor({ state: 'visible', timeout: 10000 });
+  }
+
+  async addToCartWithDefaults() {
+    await this.waitForOptionsToLoad();
+    await this.selectFirstAvailableSize();
+    await this.selectFirstAvailableColor();
     await this.addToCart();
     await this.successMessage.waitFor({ state: 'visible', timeout: 10000 });
   }
@@ -73,8 +156,37 @@ export class ProductDetailPage extends BasePage {
   }
 
   async getAvailableSizes(): Promise<string[]> {
-    const sizes = await this.sizeOptions.allTextContents();
-    return sizes.filter(size => size.trim() !== '');
+    const sizeElements = this.page.locator('.swatch-attribute.size .swatch-option');
+    const sizes = await sizeElements.evaluateAll(elements => 
+      elements.map(el => el.getAttribute('option-label') || el.textContent?.trim() || '')
+    );
+    return sizes.filter(size => size !== '');
+  }
+
+  async getAvailableColors(): Promise<string[]> {
+    const colorElements = this.page.locator('.swatch-attribute.color .swatch-option');
+    const colors = await colorElements.evaluateAll(elements => 
+      elements.map(el => el.getAttribute('option-label') || el.getAttribute('aria-label') || '')
+    );
+    return colors.filter(color => color !== '');
+  }
+
+  async isSizeSelected(size: string): Promise<boolean> {
+    const sizeOption = this.page.locator(`.swatch-attribute.size .swatch-option[option-label="${size}"]`);
+    return await sizeOption.getAttribute('class').then(className => 
+      className?.includes('selected') || false
+    );
+  }
+
+  async isColorSelected(color: string): Promise<boolean> {
+    const colorOption = this.page.locator(`.swatch-attribute.color .swatch-option[option-label="${color}"]`);
+    return await colorOption.getAttribute('class').then(className => 
+      className?.includes('selected') || false
+    );
+  }
+
+  async waitForOptionsToLoad() {
+    await this.page.waitForSelector('.swatch-attribute', { timeout: 5000 });
   }
 
   async addToWishlist() {

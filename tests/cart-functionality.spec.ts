@@ -24,7 +24,7 @@ test.describe('Shopping Cart Functionality Tests', () => {
   });
 
   test('Add single product to cart', async ({ page }) => {
-    await homePage.navigateToMenCategory();
+    await homePage.navigateToMen();
     await productListPage.selectProductByIndex(0);
 
     const productName = await productDetailPage.getProductName();
@@ -51,9 +51,7 @@ test.describe('Shopping Cart Functionality Tests', () => {
   });
 
   test('Update product quantity in cart', async ({ page }) => {
-    // Navigate to Women's section (TODO: implement navigateToWomenCategory)
-    await homePage.navigationMenu.locator('a:has-text("Women")').click();
-    await homePage.waitForPageLoad();
+    await homePage.navigateToWomen();
     await productListPage.selectProductByIndex(0);
 
     const availableSizes = await productDetailPage.getAvailableSizes();
@@ -82,7 +80,7 @@ test.describe('Shopping Cart Functionality Tests', () => {
   });
 
   test('Remove product from cart', async ({ page }) => {
-    await homePage.navigateToMenCategory();
+    await homePage.navigateToMen();
     await productListPage.selectProductByIndex(0);
 
     const availableSizes = await productDetailPage.getAvailableSizes();
@@ -112,9 +110,11 @@ test.describe('Shopping Cart Functionality Tests', () => {
     const categories = ['Men', 'Women'];
     
     for (let i = 0; i < categories.length; i++) {
-      // Navigate to category (TODO: implement proper category navigation)
-      await homePage.navigationMenu.locator(`a:has-text("${categories[i]}")`).click();
-      await homePage.waitForPageLoad();
+      if (categories[i] === 'Men') {
+        await homePage.navigateToMen();
+      } else if (categories[i] === 'Women') {
+        await homePage.navigateToWomen();
+      }
       await productListPage.selectProductByIndex(0);
 
       const availableSizes = await productDetailPage.getAvailableSizes();
@@ -137,9 +137,7 @@ test.describe('Shopping Cart Functionality Tests', () => {
   });
 
   test('Verify cart persistence across sessions', async ({ page, context }) => {
-    // Navigate to Women's section (TODO: implement navigateToWomenCategory)
-    await homePage.navigationMenu.locator('a:has-text("Women")').click();
-    await homePage.waitForPageLoad();
+    await homePage.navigateToWomen();
     await productListPage.selectProductByIndex(0);
 
     const availableSizes = await productDetailPage.getAvailableSizes();
@@ -167,7 +165,7 @@ test.describe('Shopping Cart Functionality Tests', () => {
   });
 
   test('Cart total calculations are correct', async ({ page }) => {
-    await homePage.navigateToMenCategory();
+    await homePage.navigateToMen();
     await productListPage.selectProductByIndex(0);
 
     const productPrice = await productDetailPage.getProductPrice();
@@ -202,9 +200,7 @@ test.describe('Shopping Cart Functionality Tests', () => {
   });
 
   test('Continue shopping from cart', async ({ page }) => {
-    // Navigate to Women's section (TODO: implement navigateToWomenCategory)
-    await homePage.navigationMenu.locator('a:has-text("Women")').click();
-    await homePage.waitForPageLoad();
+    await homePage.navigateToWomen();
     await productListPage.selectProductByIndex(0);
 
     const availableSizes = await productDetailPage.getAvailableSizes();

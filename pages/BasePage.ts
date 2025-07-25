@@ -18,7 +18,13 @@ export class BasePage {
   }
 
   async waitForPageLoad() {
-    await this.page.waitForLoadState('networkidle');
+    try {
+      await this.page.waitForLoadState('networkidle', { timeout: 15000 });
+    } catch (error) {
+      // If networkidle fails, try domcontentloaded as fallback
+      console.log('Networkidle timeout, falling back to domcontentloaded');
+      await this.page.waitForLoadState('domcontentloaded', { timeout: 10000 });
+    }
   }
 
   async waitForLoadingToComplete() {

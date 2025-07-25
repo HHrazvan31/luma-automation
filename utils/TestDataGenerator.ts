@@ -22,6 +22,48 @@ export class TestDataGenerator {
     return `${areaCode}${number}`;
   }
 
+  static generateRomanianPhone(): string {
+    const prefix = '+40';
+    const number = Math.floor(Math.random() * 900000000) + 100000000;
+    return `${prefix}${number}`;
+  }
+
+  // Romanian-specific data generators
+  static generateRomanianEmail(): string {
+    const timestamp = Date.now();
+    const random = Math.floor(Math.random() * 1000);
+    return `test.romania.${timestamp}.${random}@example.com`;
+  }
+
+  static generateRomanianName(): { firstName: string; lastName: string } {
+    const romanianFirstNames = ['Ion', 'Maria', 'Gheorghe', 'Elena', 'Nicolae', 'Ana', 'Vasile', 'Ioana', 'Constantin', 'Mihaela'];
+    const romanianLastNames = ['Popescu', 'Ionescu', 'Popa', 'Radu', 'Stoica', 'Stan', 'Dima', 'Constantin', 'Marin', 'Florescu'];
+    
+    const firstName = romanianFirstNames[Math.floor(Math.random() * romanianFirstNames.length)];
+    const lastName = romanianLastNames[Math.floor(Math.random() * romanianLastNames.length)];
+    
+    return { firstName, lastName };
+  }
+
+  static generateRomanianStreet(): string {
+    const streetTypes = ['Strada', 'Bulevardul', 'Calea', 'Aleea', 'Piața'];
+    const streetNames = ['Mihai Viteazu', 'Unirii', 'Libertatii', 'Victoriei', 'Republicii', 'Independentei', 'Pacii', 'Florilor'];
+    const streetType = streetTypes[Math.floor(Math.random() * streetTypes.length)];
+    const streetName = streetNames[Math.floor(Math.random() * streetNames.length)];
+    const number = Math.floor(Math.random() * 999) + 1;
+    return `${streetType} ${streetName} ${number}`;
+  }
+
+  static generateRomanianCity(): string {
+    const cities = ['Cluj-Napoca', 'Bucharest', 'Timisoara', 'Constanta', 'Iasi', 'Brasov', 'Galati', 'Ploiesti', 'Craiova', 'Oradea'];
+    return cities[Math.floor(Math.random() * cities.length)];
+  }
+
+  static generateRomanianZipCode(): string {
+    // Romanian postal codes are 6 digits
+    return (Math.floor(Math.random() * 900000) + 100000).toString();
+  }
+
   static generateRandomAddress() {
     const streets = [
       '123 Main Street',
@@ -46,27 +88,61 @@ export class TestDataGenerator {
     };
   }
 
-  static generateRandomPassword(): string {
-    const length = 12;
-    const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
-    let password = '';
-    for (let i = 0; i < length; i++) {
-      password += charset.charAt(Math.floor(Math.random() * charset.length));
-    }
-    return password;
-  }
-
-  static getTestCustomerData() {
-    const { firstName, lastName } = this.generateRandomName();
-    const address = this.generateRandomAddress();
+  static generateRomanianAddress() {
+    const cityStateMap = {
+      'Cluj-Napoca': 'Cluj',
+      'Bucharest': 'Bucureşti', 
+      'Timisoara': 'Timiş',
+      'Constanta': 'Constanţa',
+      'Iasi': 'Iaşi',
+      'Brasov': 'Braşov',
+      'Galati': 'Galaţi',
+      'Ploiesti': 'Prahova',
+      'Craiova': 'Dolj',
+      'Oradea': 'Bihor'
+    };
+    
+    const city = this.generateRomanianCity();
+    const state = cityStateMap[city as keyof typeof cityStateMap] || 'Cluj';
     
     return {
-      email: this.generateRandomEmail(),
-      firstName,
-      lastName,
-      password: this.generateRandomPassword(),
-      phone: this.generateRandomPhone(),
-      ...address
+      street: this.generateRomanianStreet(),
+      city: city,
+      state: state,
+      zipCode: this.generateRomanianZipCode(),
+      country: 'Romania'
     };
+  }
+
+
+  static getTestCustomerData(useRomanianData: boolean = true) {
+    if (useRomanianData) {
+      const { firstName, lastName } = this.generateRomanianName();
+      const address = this.generateRomanianAddress();
+      
+      return {
+        email: this.generateRomanianEmail(),
+        firstName,
+        lastName,
+        phone: this.generateRomanianPhone(),
+        ...address
+      };
+    } else {
+      const { firstName, lastName } = this.generateRandomName();
+      const address = this.generateRandomAddress();
+      
+      return {
+        email: this.generateRandomEmail(),
+        firstName,
+        lastName,
+        phone: this.generateRandomPhone(),
+        ...address
+      };
+    }
+  }
+
+  // Alias for backward compatibility
+  static getRomanianTestCustomerData() {
+    return this.getTestCustomerData(true);
   }
 }

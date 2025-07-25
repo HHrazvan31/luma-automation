@@ -1,4 +1,5 @@
 import { Page, expect } from '@playwright/test';
+import { CookieConsentHandler } from './CookieConsentHandler';
 
 export class TestHelpers {
   static async waitForUrl(page: Page, urlPattern: string | RegExp, timeout: number = 30000) {
@@ -38,13 +39,23 @@ export class TestHelpers {
   }
 
   static async acceptCookies(page: Page) {
-    try {
-      const cookieButton = page.locator('button:has-text("Accept"), button:has-text("OK"), button:has-text("Got it")');
-      if (await cookieButton.isVisible({ timeout: 5000 })) {
-        await cookieButton.click();
-      }
-    } catch (error) {
-      // Cookie banner not present, continue
+    const cookieHandler = new CookieConsentHandler(page);
+    await cookieHandler.handleCookieConsent();
+  }
+
+  static async handleCookieConsent(page: Page, strategy: 'accept' | 'manage' | 'block' = 'accept') {
+    const cookieHandler = new CookieConsentHandler(page);
+    
+    switch (strategy) {
+      case 'accept':
+        await cookieHandler.handleCookieConsent();
+        break;
+      case 'manage':
+        await cookieHandler.handleCookieConsentWithManageOptions();
+        break;  
+      case 'block':
+        await cookieHandler.blockConsentScripts();
+        break;
     }
   }
 
